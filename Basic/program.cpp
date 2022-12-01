@@ -17,12 +17,20 @@ Program::Program() = default;
 Program::~Program() = default;
 
 void Program::clear() {
+	lines.clear();
+	all_statements.clear();
     // Replace this stub with your own code
     //todo
 }
 
 void Program::addSourceLine(int lineNumber, const std::string &line) {
-    // Replace this stub with your own code
+	if(lines.empty())all_statements.insert(std::make_pair(lineNumber,line)),lines.insert(lines.begin(),lineNumber);
+	else{
+		auto iter = std::lower_bound(lines.begin(), lines.end(), lineNumber);
+		if(all_statements.find(lineNumber)!=all_statements.end())all_statements[lineNumber] = line;
+		else all_statements.insert(std::make_pair(lineNumber, line)), lines.insert(iter, lineNumber);
+	}
+	// Replace this stub with your own code
     //todo
 }
 
@@ -33,6 +41,7 @@ void Program::removeSourceLine(int lineNumber) {
 
 std::string Program::getSourceLine(int lineNumber) {
     // Replace this stub with your own code
+
     //todo
 }
 

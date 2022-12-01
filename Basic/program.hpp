@@ -33,7 +33,8 @@ class Statement;
 class Program {
 
 public:
-
+	std::vector<int>lines;
+	std::unordered_map<int,std::string>all_statements;
 /*
  * Constructor: Program
  * Usage: Program program;
